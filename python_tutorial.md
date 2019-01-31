@@ -147,4 +147,13 @@ ax.grid(True)
 # We don't need the file type (png) here.
 plt.savefig('linear')
 plt.show()
+print(intercept)
+print(slope)
+
 ```
+
+<p align="center"> <img src="https://github.com/barbaraoramah/my-CEE4530/blob/master/images/linear.png?raw=true" heights=310 width=927> </p>
+
+**Figure 1**: Linear Regression plot of concentration vs. voltage
+
+$$y=1.719 \frac{mg}{L}-0.07402 \times x$$
