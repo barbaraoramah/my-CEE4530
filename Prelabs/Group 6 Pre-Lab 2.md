@@ -1,7 +1,7 @@
 ### Ian Starnes and Barbara Oramah
 #### Pre-Lab 2, Group 6
 
-How many grams of NaHCO3 would be required to keep the ANC levels in a lake above 50 μeq/L for 3 hydraulic residence times given an influent pH of 3.0 and a lake volume of 4 L, if the current lake ANC is 0 μeq/L?
+How many grams of NaHCO3 would be required to keep the ANC levels in a lake above 50μeq/L for 3 hydraulic residence times given an influent pH of 3.0 and a lake volume of 4 L, if the current lake ANC is 0 μeq/L?
 
 $$ANC_0 = [ANC_{out} - ANC_{in} (1-e^{-t/\theta})]e^{t/\theta}$$
 
