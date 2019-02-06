@@ -8,7 +8,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 from scipy import stats
-data_set = "http://github.com/barbaraoramah/my-CEE4530/blob/master/lab%201%20data.tsv"
+data_set = ""
 
 df = pd.read_csv(data_set,delimiter='\t')
 print(df)
