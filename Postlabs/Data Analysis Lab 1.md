@@ -61,9 +61,18 @@ print(slope)
 ```
 * Create a graph of absorbance vs. concentration of red dye \#40 in Atom/Markdown using the exported data file. Does absorbance increase linearly with concentration of the red dye? Remove data points from the graph that are outside of the linear region.
 
-When the data included concentrations including the 100 mg/L and 200 mg/L the data did not increase linearly
+When the data included concentrations including the 100 mg/L and 200 mg/L the data did not increase linearly.
+
 
 * What is the value of the extinction coefficient, ε?
+
+A = εbc
+
+where:
+b - path length (1 cm)
+c -  concentration
+ε - extinction coefficient (fct of wavelength and molecule)
+
 * Did you use interpolation or extrapolation to get the concentration of the unknown?
 * What measurement controls the accuracy of the density measurement for the NaCl solution?
 * What density did you expect (see prelab 2)?
