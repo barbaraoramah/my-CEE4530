@@ -1,5 +1,6 @@
-### Ian Starnes and Barbara Oramah
-#### Data Analysis and Questions: Lab 1, Group 6
+### Data Analysis and Questions: Lab 1, Group 6
+#### Ian Starnes and Barbara Oramah
+
 
 ```python
 
@@ -62,6 +63,11 @@ print(slope)
 * Create a graph of absorbance vs. concentration of red dye \#40 in Atom/Markdown using the exported data file. Does absorbance increase linearly with concentration of the red dye? Remove data points from the graph that are outside of the linear region.
 
 When the data included concentrations including the 100 mg/L and 200 mg/L the data did not increase linearly.
+
+<p align="center"> <img src="https://github.com/barbaraoramah/my-CEE4530/blob/master/images/skewed%20post%20lab%201.png?raw=true" heights=310 width=927> </p>
+
+**Figure 1**: Linear Regression plot of concentration vs. absorbance with skewed data
+
 
 
 * What is the value of the extinction coefficient, ε?
