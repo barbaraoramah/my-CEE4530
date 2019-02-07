@@ -8,7 +8,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 from scipy import stats
-data_set = ""
+data_set = "https://raw.githubusercontent.com/barbaraoramah/my-CEE4530/master/data%20lab%201.tsv"
 
 df = pd.read_csv(data_set,delimiter='\t')
 print(df)
@@ -59,3 +59,14 @@ print(intercept)
 print(slope)
 
 ```
+* Create a graph of absorbance vs. concentration of red dye \#40 in Atom/Markdown using the exported data file. Does absorbance increase linearly with concentration of the red dye? Remove data points from the graph that are outside of the linear region.
+
+When the data included concentrations including the 100 mg/L and 200 mg/L the data did not increase linearly 
+
+* What is the value of the extinction coefficient, ε?
+* Did you use interpolation or extrapolation to get the concentration of the unknown?
+* What measurement controls the accuracy of the density measurement for the NaCl solution?
+* What density did you expect (see prelab 2)?
+* Approximately what should the accuracy be for the density measurement?
+* Don’t forget to write a brief paragraph on conclusions and on suggestions using Markdown.
+* Verify that your report and graphs meet the requirements as outlined on the course website.
