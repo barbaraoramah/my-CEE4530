@@ -53,7 +53,7 @@ ax.legend(['Measured', 'Linear regression'])
 ax.grid(True)
 # Here I save the file to my local harddrive. You will need to change this to work on your computer.
 # We don't need the file type (png) here.
-plt.savefig('linear')
+plt.savefig('linear without skewed points')
 plt.show()
 print(intercept)
 print(slope)
@@ -61,7 +61,7 @@ print(slope)
 ```
 * Create a graph of absorbance vs. concentration of red dye \#40 in Atom/Markdown using the exported data file. Does absorbance increase linearly with concentration of the red dye? Remove data points from the graph that are outside of the linear region.
 
-When the data included concentrations including the 100 mg/L and 200 mg/L the data did not increase linearly 
+When the data included concentrations including the 100 mg/L and 200 mg/L the data did not increase linearly
 
 * What is the value of the extinction coefficient, ε?
 * Did you use interpolation or extrapolation to get the concentration of the unknown?
