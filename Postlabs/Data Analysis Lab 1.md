@@ -9,7 +9,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 from scipy import stats
-data_set = "https://raw.githubusercontent.com/barbaraoramah/my-CEE4530/master/data%20lab%201%20(skewed).tsv"
+data_set = "https://raw.githubusercontent.com/barbaraoramah/my-CEE4530/master/data%20lab%201.tsv"
 
 df = pd.read_csv(data_set,delimiter='\t')
 print(df)
@@ -59,8 +59,10 @@ plt.savefig('skewed pts')
 plt.show()
 print(intercept)
 print(slope)
-
 ```
+
+
+
 * Create a graph of absorbance vs. concentration of red dye \#40 in Atom/Markdown using the exported data file. Does absorbance increase linearly with concentration of the red dye? Remove data points from the graph that are outside of the linear region.
 
 When the data included concentrations including the 100 mg/L and 200 mg/L the data did not increase linearly.
@@ -73,6 +75,8 @@ When the data included concentrations including the 100 mg/L and 200 mg/L the da
 
 **Figure 2**: Linear Regression plot of concentration vs. absorbance without skewed data
 
+$$y = 0.08374 \frac{mg}{L} + 0.04643x$$
+
 * What is the value of the extinction coefficient, ε?
 
 $$ A = εbc $$
@@ -83,12 +87,19 @@ The photometer is a flow cell with an optical path length of 19 mm.
 c - concentration
 ε - extinction coefficient (fctn of wavelength and molecule)
 
-Therefore,
+In order to find ε, use the linear regression formula. We can neglect the intercept.
 
-$$ε = \frac{A}{bc}$$
-$$ε = \frac{0.369143111}{(0.019 m)  \times5 \frac{g}{m^3}}$$
-ε = 3.89
+A = y
+m = εb
+c = x
 
+$$ m = εb $$
+$$ ε = \frac{m}{b} $$
+$$ε = \frac{0.04643}{(0.019 m)}$$
+$$ε = 2.44 \frac{m^2}{mg}$$
+
+
+slope =  m3/mg
 absorbance g/m^2
 
 The extinction coefficient was determined by solving ε for each concentration. We then assumed that ε was the highest ε we obtained.
