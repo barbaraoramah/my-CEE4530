@@ -73,21 +73,21 @@ When the data included concentrations including the 100 mg/L and 200 mg/L the da
 
 **Figure 2**: Linear Regression plot of concentration vs. absorbance without skewed data
 
-
 * What is the value of the extinction coefficient, ε?
 
 $$ A = εbc $$
 
 where:
-b - path length (465 nm = 4.65x10^-7 m)
+b - path length  19 mm
+The photometer is a flow cell with an optical path length of 19 mm.
 c - concentration
 ε - extinction coefficient (fctn of wavelength and molecule)
 
 Therefore,
 
 $$ε = \frac{A}{bc}$$
-$$ε = \frac{0.369143111}{(4.65\times10^-7 m) \times5 \frac{g}{m^3}}$$
-ε = 158.7
+$$ε = \frac{0.369143111}{(0.019 m)  \times5 \frac{g}{m^3}}$$
+ε = 3.89
 
 absorbance g/m^2
 
