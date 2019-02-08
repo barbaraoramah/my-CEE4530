@@ -76,7 +76,7 @@ When the data included concentrations including the 100 mg/L and 200 mg/L the da
 
 * What is the value of the extinction coefficient, ε?
 
-$$ A = εbc$$
+$$ A = εbc $$
 
 where:
 b - path length (465 nm = 4.65x10^-7 m)
@@ -86,10 +86,12 @@ c - concentration
 Therefore,
 
 $$ε = \frac{A}{bc}$$
-th
+$$ε = \frac{0.369143111}{(4.65\times10^-7 m) \times5 \frac{g}{m^3}}$$
 ε = 158.7
 
-The extinction coefficient was d
+absorbance g/m^2
+
+The extinction coefficient was determined by solving ε for each concentration. We then assumed that ε was the highest ε we obtained.
 
 * Did you use interpolation or extrapolation to get the concentration of the unknown?
 
