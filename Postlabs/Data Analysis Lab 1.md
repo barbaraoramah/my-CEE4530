@@ -65,7 +65,7 @@ print(slope)
 
 When the data included concentrations including the 100 mg/L and 200 mg/L the data did not increase linearly.
 
-<p align="center"> <img src="https://github.com/barbaraoramah/my-CEE4530/blob/master/images/skewed.png?raw=true" heights=310 width=927> </p>
+<p align="center"> <img src="https://github.com/barbaraoramah/my-CEE4530/blob/master/images/skewed%20pts.png?raw=true" heights=310 width=927> </p>
 
 **Figure 1**: Linear Regression plot of concentration vs. absorbance with skewed data
 
@@ -76,12 +76,12 @@ When the data included concentrations including the 100 mg/L and 200 mg/L the da
 
 * What is the value of the extinction coefficient, ε?
 
-A = εbc
+$$ A = εbc$$
 
 where:
 b - path length (465 nm = 4.65x10^-7 m)
 c - concentration
-ε - extinction coefficient (fct of wavelength and molecule)
+ε - extinction coefficient (fctn of wavelength and molecule)
 
 Therefore,
 
