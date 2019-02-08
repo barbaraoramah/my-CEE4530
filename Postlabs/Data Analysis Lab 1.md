@@ -9,7 +9,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 from scipy import stats
-data_set = ""
+data_set = "https://raw.githubusercontent.com/barbaraoramah/my-CEE4530/master/data%20lab%201%20(skewed).tsv"
 
 df = pd.read_csv(data_set,delimiter='\t')
 print(df)
@@ -108,6 +108,6 @@ We would expect our experimental density to be within the 0.16% accuracy.
 
 * Don’t forget to write a brief paragraph on conclusions and on suggestions using Markdown.
 
-In this lab we learned how to use several instruments that we will continue to use for the rest of the labs. This included how to calibrate and use the electronic balances. We also used the proper technique for the pipette to measure reverse osmosis water. We diluted stock solution into various designated concentrationssolutions.
+In this lab we learned how to use several instruments that we will continue to use for the rest of the labs. This included how to calibrate and use the electronic balances. We also used the proper technique for the pipette to measure reverse osmosis water. We diluted stock solution into various designated concentrations of red dye. Finally we
 
 * Verify that your report and graphs meet the requirements as outlined on the course website.
