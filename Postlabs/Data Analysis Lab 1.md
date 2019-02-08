@@ -9,7 +9,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 from scipy import stats
-data_set = "https://raw.githubusercontent.com/barbaraoramah/my-CEE4530/master/data%20lab%201.tsv"
+data_set = ""
 
 df = pd.read_csv(data_set,delimiter='\t')
 print(df)
@@ -22,13 +22,13 @@ print(columns)
 x = df[list(df)[0]].values * u.mg/u.L
 x
 # 3) We can use the iloc command and select all of the rows in column 0.
-x = df.iloc[:,0].values * u.mg/u.L
-x
+y = df.iloc[:,0].values * u.mg/u.L
+y
 # use the .loc method to call data of x values
-x = df.loc[:, list(df)[0]].values * u.mg/u.L
-x
+y = df.loc[:, list(df)[0]].values * u.mg/u.L
+y
 # use .iloc for calling y values
-y = df.iloc[:,1].values * u.mg/u.L
+x = df.iloc[:,1].values * u.mg/u.L
 
 slope, intercept, r_value, p_value, std_err = stats.linregress(x,y)
 
@@ -48,13 +48,13 @@ ax.plot(x, y, 'ro', )
 ax.plot(x, slope * x + intercept, 'k-', )
 
 # Add axis labels using the column labels from the dataframe
-ax.set(xlabel=list(df)[0])
-ax.set(ylabel=list(df)[1])
+ax.set(xlabel=list(df)[1])
+ax.set(ylabel=list(df)[0])
 ax.legend(['Measured', 'Linear regression'])
 ax.grid(True)
 # Here I save the file to my local harddrive. You will need to change this to work on your computer.
 # We don't need the file type (png) here.
-plt.savefig('linear without skewed points')
+plt.savefig('skewed')
 plt.show()
 print(intercept)
 print(slope)
@@ -68,6 +68,9 @@ When the data included concentrations including the 100 mg/L and 200 mg/L the da
 
 **Figure 1**: Linear Regression plot of concentration vs. absorbance with skewed data
 
+<p align="center"> <img src="https://github.com/barbaraoramah/my-CEE4530/blob/master/images/linear%20without%20skewed%20points%20post%20lab1.png?raw=true" heights=310 width=927> </p>
+
+**Figure 2**: Linear Regression plot of concentration vs. absorbance without skewed data
 
 
 * What is the value of the extinction coefficient, ε?
@@ -75,13 +78,36 @@ When the data included concentrations including the 100 mg/L and 200 mg/L the da
 A = εbc
 
 where:
-b - path length (1 cm)
-c -  concentration
+b - path length (465 nm = 4.65x10^-7 m)
+c - concentration
 ε - extinction coefficient (fct of wavelength and molecule)
 
+Therefore,
+
+$$ε = \frac{A}{bc}$$
+th
+ε = 158.7
+
+The extinction coefficient was d
+
 * Did you use interpolation or extrapolation to get the concentration of the unknown?
+
+We used interpolation to find the concentration of the unknown as the voltage
+
 * What measurement controls the accuracy of the density measurement for the NaCl solution?
-* What density did you expect (see prelab 2)?
+
+The volumetric flask was the controlling factor of our accuracy with an accuracy of 0.16 mL/ 100 mL (0.16%). The percent error in the mass error of NaCl is lower at 0.017%.
+
+* What density did you expect (see prelab 1)?
+
+Based on our pre-lab, the calculated value of NaCl was 1037.8 g/L.
+
 * Approximately what should the accuracy be for the density measurement?
+
+We would expect our experimental density to be within the 0.16% accuracy.
+
 * Don’t forget to write a brief paragraph on conclusions and on suggestions using Markdown.
+
+In this lab we learned how to use several instruments that we will continue to use for the rest of the labs. This included how to calibrate and use the electronic balances. We also used the proper technique for the pipette to measure reverse osmosis water. We diluted stock solution into various designated concentrationssolutions.
+
 * Verify that your report and graphs meet the requirements as outlined on the course website.
