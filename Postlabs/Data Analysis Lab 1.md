@@ -9,7 +9,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 from scipy import stats
-data_set = "https://raw.githubusercontent.com/barbaraoramah/my-CEE4530/master/data%20lab%201%20(skewed).tsv"
+data_set = "https://raw.githubusercontent.com/barbaraoramah/my-CEE4530/master/data%20lab%201.tsv"
 
 df = pd.read_csv(data_set,delimiter='\t')
 print(df)
@@ -51,10 +51,11 @@ ax.plot(x, slope * x + intercept, 'k-', )
 ax.set(xlabel=list(df)[1])
 ax.set(ylabel=list(df)[0])
 ax.legend(['Measured', 'Linear regression'])
+ax.set(title = "Concentration vs. absorbance without skewed data")
 ax.grid(True)
 # Here I save the file to my local harddrive. You will need to change this to work on your computer.
 # We don't need the file type (png) here.
-plt.savefig('skewed')
+plt.savefig('linear without skewed pts')
 plt.show()
 print(intercept)
 print(slope)
@@ -64,11 +65,11 @@ print(slope)
 
 When the data included concentrations including the 100 mg/L and 200 mg/L the data did not increase linearly.
 
-<p align="center"> <img src="https://github.com/barbaraoramah/my-CEE4530/blob/master/images/skewed%20post%20lab%201.png?raw=true" heights=310 width=927> </p>
+<p align="center"> <img src="https://github.com/barbaraoramah/my-CEE4530/blob/master/images/skewed.png?raw=true" heights=310 width=927> </p>
 
 **Figure 1**: Linear Regression plot of concentration vs. absorbance with skewed data
 
-<p align="center"> <img src="https://github.com/barbaraoramah/my-CEE4530/blob/master/images/linear%20without%20skewed%20points%20post%20lab1.png?raw=true" heights=310 width=927> </p>
+<p align="center"> <img src="https://github.com/barbaraoramah/my-CEE4530/blob/master/images/linear%20without%20skewed%20points.png?raw=true" heights=310 width=927> </p>
 
 **Figure 2**: Linear Regression plot of concentration vs. absorbance without skewed data
 
@@ -108,6 +109,8 @@ We would expect our experimental density to be within the 0.16% accuracy.
 
 * Don’t forget to write a brief paragraph on conclusions and on suggestions using Markdown.
 
-In this lab we learned how to use several instruments that we will continue to use for the rest of the labs. This included how to calibrate and use the electronic balances. We also used the proper technique for the pipette to measure reverse osmosis water. We diluted stock solution into various designated concentrations of red dye. Finally we
+In this lab we learned how to use several instruments that we will continue to use for the rest of the labs. This included how to calibrate and use the electronic balances. We also used the proper technique for the pipette to measure the masses of reverse osmosis water. We diluted stock solution into various designated concentrations of red dye. Finally we learned how to calibrate and use the photometer in order to interpolate the unknown concentration in a dilute sample of red dye.
+
+We don't have any suggestions on improving Markdown.
 
 * Verify that your report and graphs meet the requirements as outlined on the course website.
