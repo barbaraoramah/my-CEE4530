@@ -9,7 +9,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 from scipy import stats
-data_set = "https://raw.githubusercontent.com/barbaraoramah/my-CEE4530/master/data%20lab%201.tsv"
+data_set = "https://raw.githubusercontent.com/barbaraoramah/my-CEE4530/master/data%20lab%201%20(skewed).tsv"
 
 df = pd.read_csv(data_set,delimiter='\t')
 print(df)
@@ -51,11 +51,11 @@ ax.plot(x, slope * x + intercept, 'k-', )
 ax.set(xlabel=list(df)[1])
 ax.set(ylabel=list(df)[0])
 ax.legend(['Measured', 'Linear regression'])
-ax.set(title = "Concentration vs. absorbance without skewed data")
+ax.set(title = "Concentration vs. absorbance with skewed data")
 ax.grid(True)
 # Here I save the file to my local harddrive. You will need to change this to work on your computer.
 # We don't need the file type (png) here.
-plt.savefig('linear without skewed pts')
+plt.savefig('skewed pts')
 plt.show()
 print(intercept)
 print(slope)
@@ -69,7 +69,7 @@ When the data included concentrations including the 100 mg/L and 200 mg/L the da
 
 **Figure 1**: Linear Regression plot of concentration vs. absorbance with skewed data
 
-<p align="center"> <img src="https://github.com/barbaraoramah/my-CEE4530/blob/master/images/linear%20without%20skewed%20points.png?raw=true" heights=310 width=927> </p>
+<p align="center"> <img src="https://github.com/barbaraoramah/my-CEE4530/blob/master/images/linear%20without%20skewed%20pts.png?raw=true" heights=310 width=927> </p>
 
 **Figure 2**: Linear Regression plot of concentration vs. absorbance without skewed data
 
