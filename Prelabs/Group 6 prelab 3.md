@@ -29,7 +29,8 @@ from aguaclara import *
 #I created a function that calculates the pH given the ANC for an open system. You can use this code to find the pH of the lake and the pond!
 
 def ANC_zeroed(pHguess, ANC):
-  return ((epa.ANC_open(pHguess) - ANC.to(u.mol/u.L)).magnitude)
+  return ((epa.ANC_open(pHguess) - ANC).to(u.mol/u.L)).magnitude
+
 
 # Now we use root finding to find the pH that results in the known ANC.
 # Our function will call the ANC_zeroed function. The pHguess is the first
@@ -40,14 +41,17 @@ def ANC_zeroed(pHguess, ANC):
 def pH_open(ANC):
   return optimize.brentq(ANC_zeroed, 0, 14,args=(ANC))
 
-anc_cayuga = (0.8)*(0.0016 * u.eq/u.L)+(0.2)*(pH_open(3.5))
-anc_wolfpond = (0.8)*(0.00007 * u.eq/u.L)+(0.2)*(pH_open(3.5))
+anc_cayuga = (0.8)*(0.0016*u.eq/u.L)+(0.2)*(ANC_open(3.5))
+anc_wolfpond = (0.8)*(0.00007 * u.eq/u.L)+(0.2)*(ANC_open(3.5))
 # We can test this function to find the pH of pure water in equilibrium
 # with the atmosphere
 pH_open(anc_cayuga)
 
 print('The pH of pure water equilibrium with the atmosphere is',pH_open(anc_cayuga))
+print('The pH of pure water equilibrium with the atmosphere is',pH_open(anc_wolfpond))
 
+# Now we use the ANC_open function to find the ANC of the water sample
+print('the ANC of the water sample is', ANC_open(3.2))
 ```
 
 ####2.
