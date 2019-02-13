@@ -77,6 +77,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 from scipy import stats
+data_set = "https://raw.githubusercontent.com/barbaraoramah/my-CEE4530/master/Lab%202%20-%20Acid%20Rain%20(1).txt"
 import aguaclara.research.environmental_processes_analysis as epa
 
 from aguaclara import *
@@ -105,12 +106,12 @@ print(flow_rate)
 theta = volume_water/flow_rate
 print(theta)
 
+t = epa.column_of_time(data_set,1,-1)
+print(t)
+#t - time/theta
+
 ANC_out = epa.CMFR(theta, ANC_0, ANC_in)
 print(ANC_out)
-
-
-
-
 
 
 list(df)
