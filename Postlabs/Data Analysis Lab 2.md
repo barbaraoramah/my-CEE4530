@@ -213,7 +213,7 @@ plt.show()
 ##### Questions
 1. What do you think would happen if enough NaHCO3 were added to the lake to maintain an ANC greater than 50μeq/L for 3 residence times with the stirrer turned off?
 
-Due to the stirrer being off, the 
+Due to the stirrer being off, the pH will be different throughout the lake.
 
 2. What are some of the complicating factors you might find in attempting to remediate a lake using CaCO3? Below is a list of issues to consider.
 extent of mixing solubility of CaCO3 (find the solubility and compare with NaHCO3)
