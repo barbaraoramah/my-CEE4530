@@ -57,16 +57,18 @@ ax.set(title = "Measured pH vs Hydraulic residence time")
 ax.grid(True)
 # Here I save the file to my local harddrive. You will need to change this to work on your computer.
 # We don't need the file type (png) here.
-plt.savefig('phplot')
+plt.savefig('phplot0')
 plt.show()
 
 ```
-***INSERT IMAGE HERE***
-<p align="center"> <img src="" heights=310 width=927> </p>
 
-**Figure 1:**
+<p align="center"> <img src="https://github.com/barbaraoramah/my-CEE4530/blob/master/images/phplot0.png?raw=true" heights=310 width=927> </p>
+
+**Figure 1**
 
 2. Assuming that the lake can be modeled as a completely mixed flow reactor and that ANC is a conservative parameter, equation (25) can be used to calculate the expected ANC in the lake effluent as the experiment proceeds. Graph the expected ANC in the lake effluent versus the hydraulic residence time (t/θ) based on the completely mixed flow reactor equation with the plot labeled (in the legend) as conservative ANC.
+3. If we assume that there are no carbonates exchanged with the atmosphere during the experiment, then we can calculate ANC in the lake effluent by using equation (14) describing the ANC of a closed system. Calculate the ANC under the assumption of a closed system and plot it on the same graph produced in answering question #3 with the plot labeled (in the legend) as closed ANC.
+4. If we assume that there is exchange with the atmosphere and that carbonates are at equilibrium with the atmosphere, then we can calculate ANC in the lake effluent by using equation (18) describing the ANC of an open system. Calculate the ANC under the assumption of an open system and plot it on the same graph produced in answering question #3 with the plot labeled (in the legend) as open ANC.
 
 $$ANC_0 = [ANC_{out} - ANC_{in} (1-e^{-t/\theta})]e^{t/\theta}$$
 
@@ -141,17 +143,19 @@ ax.set(title = "Hydraulic residence time vs Various ANC scenarios")
 ax.legend([ 'Expected ANC','Closed ANC', 'Open ANC'])
 ax.grid(True)
 plt.ylim((-.001,0.002))
+
 # Here I save the file to my local harddrive. You will need to change this to work on your computer.
 # We don't need the file type (png) here.
-plt.savefig('ANCexpectedplot')
+plt.savefig('ANCplots2')
 plt.show()
-
-
-
 ```
+<p align="center"> <img src="https://github.com/barbaraoramah/my-CEE4530/blob/master/images/ANCplots.png?raw=true" heights=310 width=927> </p>
 
-3. If we assume that there are no carbonates exchanged with the atmosphere during the experiment, then we can calculate ANC in the lake effluent by using equation (14) describing the ANC of a closed system. Calculate the ANC under the assumption of a closed system and plot it on the same graph produced in answering question #3 with the plot labeled (in the legend) as closed ANC.
-4. If we assume that there is exchange with the atmosphere and that carbonates are at equilibrium with the atmosphere, then we can calculate ANC in the lake effluent by using equation (18) describing the ANC of an open system. Calculate the ANC under the assumption of an open system and plot it on the same graph produced in answering question #3 with the plot labeled (in the legend) as open ANC.
+**Figure 2**
+
+***why is the y axis cut off?***
+
+
 5. Analyze the data from the second experiment and graph the data appropriately. What did you learn from the second experiment?
 
 ```python
@@ -210,11 +214,17 @@ ax.grid(True)
 plt.savefig('phplot1')
 plt.show()
 ```
+<p align="center"> <img src="https://github.com/barbaraoramah/my-CEE4530/blob/master/images/phplot1.png?raw=true" heights=310 width=927> </p>
+
+**Figure 3**
+
 ##### Questions
 1. What do you think would happen if enough NaHCO3 were added to the lake to maintain an ANC greater than 50μeq/L for 3 residence times with the stirrer turned off?
 
-Due to the stirrer being off, the pH will be different throughout the lake.
+Due to the stirrer being off, the pH will be different throughout the lake. The pH will be lower at the source of the acid and higher farther away. The lake will remain blue for longer due to the increase ANC at the start of the experiment.
 
 2. What are some of the complicating factors you might find in attempting to remediate a lake using CaCO3? Below is a list of issues to consider.
-extent of mixing solubility of CaCO3 (find the solubility and compare with NaHCO3)
-density of CaCO3 slurry (find the density of CaCO3)
+- extent of mixing solubility of CaCO3 (find the solubility and compare with NaHCO3)
+- density of CaCO3 slurry (find the density of CaCO3)
+
+The solubility of the CaCO3 is very low in water. Therefore, it might not work to just add in a lot of it at the same time. Instead if a steady amount was added during the during of the acid rain, the solubility might not be a problem.
