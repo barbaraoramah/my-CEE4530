@@ -74,6 +74,11 @@ $$ANC_0 = [ANC_{out} - ANC_{in} (1-e^{-t/\theta})]e^{t/\theta}$$
 
 $$ANC_{out}= \frac {ANC_0}{e^{t/\theta}} + ANC_{in} (1-e^{-t/\theta}) $$
 
+
+<p align="center"> <img src="https://github.com/barbaraoramah/my-CEE4530/blob/master/images/ANCplots2.png?raw=true" heights=310 width=927> </p>
+
+**Figure 2** 
+
 ```python
 # Part 2: CMFR graph
 from aguaclara.core.units import unit_registry as u
@@ -123,7 +128,7 @@ ANC_out
 # Q3
 
 lake_pH = df.iloc[:,1].values
-ANC_cl=epa.ANC_closed(y,ANC_0)
+ANC_cl=epa.ANC_closed(lake_pH,ANC_0)
 ANC_cl = ANC_cl[0:1496]
 ANC_cl
 
@@ -134,29 +139,33 @@ ANC_o = ANC_o[0:1496]
 fig, ax = plt.subplots()
 
 
-ax.plot(res_time, ANC_out, 'r', res_time, ANC_cl, 'b', res_time, ANC_o, 'g')
+ax.plot(res_time, ANC_out.to(u.meq/u.L), 'r', res_time, ANC_cl.to(u.meq/u.L), 'b', res_time, ANC_o.to(u.meq/u.L), 'g')
 
 # Add axis labels using the column labels from the dataframe
 ax.set(xlabel= 'Hydraulic residence time (unitless)')
-ax.set(ylabel= 'ANC (eq/L)')
+ax.set(ylabel= 'ANC (meq/L)')
 ax.set(title = "Hydraulic residence time vs Various ANC scenarios")
 ax.legend([ 'Expected ANC','Closed ANC', 'Open ANC'])
 ax.grid(True)
-plt.ylim((-.001,0.002))
+plt.ylim((-1,2))
+plt.xlim(0,2)
 
 # Here I save the file to my local harddrive. You will need to change this to work on your computer.
 # We don't need the file type (png) here.
 plt.savefig('ANCplots2')
 plt.show()
 ```
-<p align="center"> <img src="https://github.com/barbaraoramah/my-CEE4530/blob/master/images/ANCplots.png?raw=true" heights=310 width=927> </p>
 
-**Figure 2**
-
-***why is the y axis cut off?***
 
 
 5. Analyze the data from the second experiment and graph the data appropriately. What did you learn from the second experiment?
+
+
+<p align="center"> <img src="https://github.com/barbaraoramah/my-CEE4530/blob/master/images/phplot1.png?raw=true" heights=310 width=927> </p>
+
+**Figure 3:** Double ANC
+
+We learned that by doubling the ANC added, the pH took a longer time to drop. This is because there was a higher buffer capacity, causing the lake to acidify at a slower rate.
 
 ```python
 from aguaclara.core.units import unit_registry as u
@@ -214,17 +223,14 @@ ax.grid(True)
 plt.savefig('phplot1')
 plt.show()
 ```
-<p align="center"> <img src="https://github.com/barbaraoramah/my-CEE4530/blob/master/images/phplot1.png?raw=true" heights=310 width=927> </p>
-
-**Figure 3**
 
 ##### Questions
 1. What do you think would happen if enough NaHCO3 were added to the lake to maintain an ANC greater than 50μeq/L for 3 residence times with the stirrer turned off?
 
-Due to the stirrer being off, the pH will be different throughout the lake. The pH will be lower at the source of the acid and higher farther away. The lake will remain blue for longer due to the increase ANC at the start of the experiment.
+Due to the stirrer being off, when the NaHCO3 is added, some of it will dissolve the water while some of it will sink tot eh bottom due to the greater density of NaHCO3 than water. The water in which some of the NaHCO3 dissolved in more dense than the rest of the water and it will also sink. Therefore, as the acid is added the pH will be different throughout the lake. The pH will be lower at the source of the acid, at the top of the lake, and higher farther away, at the bottom of the lake.
 
 2. What are some of the complicating factors you might find in attempting to remediate a lake using CaCO3? Below is a list of issues to consider.
 - extent of mixing solubility of CaCO3 (find the solubility and compare with NaHCO3)
 - density of CaCO3 slurry (find the density of CaCO3)
 
-The solubility of the CaCO3 is very low in water. Therefore, it might not work to just add in a lot of it at the same time. Instead if a steady amount was added during the during of the acid rain, the solubility might not be a problem.
+The solubility of the CaCO3 is very low in water. Therefore, it might not work to just add in a lot of it at the same time. Instead if a steady amount was added during the during of the acid rain, the solubility might not be a problem. If all of the CaCO3 is added at the same time, a lot of it will not go into solution but rather settle at the bottom. The effect of this is that the ANC will not use the full potential of the CaCO3 added.
