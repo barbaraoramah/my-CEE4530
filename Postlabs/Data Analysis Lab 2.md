@@ -1,4 +1,4 @@
-### Questions: Lab 2, Group 6
+### Data Analysis and Questions: Lab 2, Group 6
 #### Ian Starnes and Barbara Oramah
 
 $$K1=10^{−6.3} , K2=10^{−10.3}, KH=10^{−1.5\frac{mol}{L*atm}}, PCO2=10^{−3.5}atm,  and Kw=10^{−14}$$
