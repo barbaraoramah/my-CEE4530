@@ -55,7 +55,11 @@ plt.show()
 
 ```
 
-<p align="center"> <img src="" heights=310 width=927> </p>
+<p align="center"> <img src="https://github.com/barbaraoramah/my-CEE4530/blob/master/images/gran_t=0.png?raw=true" heights=310 width=927> </p>
+
+**Figure 1:** Titration curve of the t=0 sample with 0.05 N HCl
+
+
 
 $${F_1} = \frac{{{V_S} + {V_T}}}{{{V_S}}}{\text{[}}{{\text{H}}^ + }{\text{]}}$$
 
@@ -78,6 +82,7 @@ Gran_data = 'https://raw.githubusercontent.com/barbaraoramah/my-CEE4530/master/L
 # The epa.Gran function assigns all of the outputs in one statement
 V_titrant, pH, V_Sample, Normality_Titrant, V_equivalent, ANC = epa.Gran(Gran_data)
 
+V_equivalent
 
 #Define the gran function.
 def F1(V_sample,V_titrant,pH):
@@ -108,10 +113,87 @@ plt.xlabel('Titrant Volume (mL)')
 plt.ylabel('Gran function (mole/L)')
 plt.legend(['data'])
 
-plt.savefig('Examples/images/Gran.png')
+plt.savefig('GranQ2.png')
 plt.show()
 ```
+The calulated Ve (0.79 mL) is approximately the same as the ProCoDa Ve (0.790561 mL).
 
-
+<p align="center"> <img src="https://github.com/barbaraoramah/my-CEE4530/blob/master/images/GranQ2.png?raw=true" heights=310 width=927> </p>
 
 3. Plot the measured ANC of the lake on the same graph as was used to plot the conservative, volatile, and nonvolatile ANC models (see questions 2 to 5 of the Acid Precipitation and Remediation of an Acid Lake lab). Did the measured ANC values agree with the conservative ANC model?
+
+```python
+from aguaclara.core.units import unit_registry as u
+u.define("equivalent = mole = eq")
+import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
+from scipy import stats
+data_set = "https://raw.githubusercontent.com/barbaraoramah/my-CEE4530/master/Lab%202%20-%20Acid%20Rain%20(1).txt"
+import aguaclara.research.environmental_processes_analysis as epa
+import math
+from aguaclara import *
+
+df = pd.read_csv(data_set,delimiter='\t')
+print(df)
+
+
+mass_total = 4.563 * u.kg
+mass_bucket = 0.592* u.kg
+mass_water = mass_total-mass_bucket
+print(mass_water)
+volume_water = (mass_water/(1*u.kg/u.L))
+print (volume_water)
+ANC_in = -0.001*u.eq/u.L
+pH_0 = 7.77
+mass_nahco3 = 0.623 * u.g
+mwt_nahco3 = 84* u.g/u.eq
+conc_nahco3 = mass_nahco3/mwt_nahco3/volume_water
+print(conc_nahco3)
+ANC_0 = conc_nahco3
+print(ANC_0)
+
+flow_rate = 0.074/15*u.L/u.s
+print(flow_rate)
+theta = volume_water/flow_rate
+print(theta)
+
+ # Q2
+time = epa.column_of_time(data_set,1,-1)
+time
+# note: you cannot print a list that has units, you must call it on its own. refer to 't' variable.
+res_time = (time/theta).to('dimensionless')
+res_time
+ANC_out = ANC_0*(np.exp(-res_time))+ANC_in*(1-(np.exp(-res_time)))
+ANC_out
+
+# Q3
+
+lake_pH = df.iloc[:,1].values
+ANC_cl=epa.ANC_closed(lake_pH,ANC_0)
+ANC_cl = ANC_cl[0:1496]
+ANC_cl
+
+# Q4
+ANC_o = epa.ANC_open(lake_pH)
+ANC_o = ANC_o[0:1496]
+# Now create a figure and plot the data and the line from the linear regression.
+fig, ax = plt.subplots()
+
+
+ax.plot(res_time, ANC_out.to(u.meq/u.L), 'r', res_time, ANC_cl.to(u.meq/u.L), 'b', res_time, ANC_o.to(u.meq/u.L), 'g')
+
+# Add axis labels using the column labels from the dataframe
+ax.set(xlabel= 'Hydraulic residence time (unitless)')
+ax.set(ylabel= 'ANC (meq/L)')
+ax.set(title = "Hydraulic residence time vs Various ANC scenarios")
+ax.legend([ 'Conservative ANC','Nonvolatile ANC', 'Volatile ANC'])
+ax.grid(True)
+plt.ylim((-1,2))
+plt.xlim(0,2)
+
+# Here I save the file to my local harddrive. You will need to change this to work on your computer.
+# We don't need the file type (png) here.
+plt.savefig('ANCplots3')
+plt.show()
+```
