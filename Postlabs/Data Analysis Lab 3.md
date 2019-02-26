@@ -2,17 +2,69 @@
 #### Ian Starnes and Barbara Oramah
 
 ####Introduction
+Why did you decide to do this experiment? Introduce your approach by explaining what needs to be done to meet your goal for your real world project. Explain what you hoped to learn through this research. How did you expect this experiment to guide your decisions about the real world project that you are working on?
 
+This is the section where you can present the equations that you will be using. Format the equations using Latex to create a beautiful report.
 ##### Objective
 
 #### Procedure
-
+Provide an overview of the methods that you used in your investigation. The best procedures give an overview of the method with an explanation of why you used those methods. There is no need to restate the step-by-step procedures as outlined in the lab manual: it is sufficient to cite the lab manual and include information on any deviations from the manual procedures. When method development is part of the laboratory exercise, a detailed description of the methods should be included. Methods and procedures need to be detailed enough so that one of your classmates could duplicate your work.
 #### Results and Discussion
 
 
 1. Plot the titration curve of the t=0 sample with 0.05 N HCl (plot pH as a function of titrant volume). Label the equivalent volume of titrant. Label the 2 regions of the graph where pH changes slowly with the dominant reaction that is occurring. (Place labels with the chemical reactions on the graph in the pH regions where each reaction is occurring.) Note that in a third region of slow pH change no significant reactions are occurring (added hydrogen ions contribute directly to change in pH).
 
 
+```Python
+unit_registry as u
+u.define("equivalent = mole = eq")
+import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
+from scipy import stats
+data_set = "https://raw.githubusercontent.com/barbaraoramah/my-CEE4530/master/Lab%203%20Data/time_equals_0_Gran_Plot.xls"
+import aguaclara.research.environmental_processes_analysis as epa
+import math
+from aguaclara import *
+
+df = pd.read_csv(data_set,delimiter='\t')
+print(df)
+
+mass_total = 4.563 * u.kg
+mass_bucket = 0.592* u.kg
+mass_water = mass_total-mass_bucket
+print(mass_water)
+volume_water = (mass_water/(1*u.kg/u.L))
+print (volume_water)
+flow_rate = 0.074/15*u.L/u.s
+print(flow_rate)
+theta = volume_water/flow_rate
+print(theta)
+
+list(df)
+columns = df.columns
+print(columns)
+
+# use the .loc method to call data of x values
+x = df.loc[:, list(df)[0]].values * u.day
+x
+# use .iloc for calling y values
+y = df.iloc[:,1].values
+
+
+# Now create a figure and plot the data and the line from the linear regression.
+fig, ax = plt.subplots()
+
+
+# plot the data as red circles
+ax.plot(((x - (0.607747546*u.day))/theta)*100000*u.s, y, 'r')
+```
+$${F_1} = \frac{{{V_S} + {V_T}}}{{{V_S}}}{\text{[}}{{\text{H}}^ + }{\text{]}}$$
+
+The ANC can be calculated from the equivalent volume from $$ANC=\frac{V_e N_t }{V_s }$$
+
+
+2. Prepare a Gran plot using the data from the titration curve of the t=0 sample. Use linear regression on the linear region or simply draw a straight line through the linear region of the curve to identify the equivalent volume. Compare your calculation of Ve with that was calculated by ProCoDA.
 ```python
 from aguaclara.core.units import unit_registry as u
 import aguaclara.research.environmental_processes_analysis as epa
@@ -63,7 +115,5 @@ plt.show()
 ```
 
 
-
-2. Prepare a Gran plot using the data from the titration curve of the t=0 sample. Use linear regression on the linear region or simply draw a straight line through the linear region of the curve to identify the equivalent volume. Compare your calculation of Ve with that was calculated by ProCoDA.
 
 3. Plot the measured ANC of the lake on the same graph as was used to plot the conservative, volatile, and nonvolatile ANC models (see questions 2 to 5 of the Acid Precipitation and Remediation of an Acid Lake lab). Did the measured ANC values agree with the conservative ANC model?
