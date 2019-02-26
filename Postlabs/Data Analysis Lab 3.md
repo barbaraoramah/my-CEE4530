@@ -16,49 +16,47 @@ Provide an overview of the methods that you used in your investigation. The best
 
 
 ```Python
-unit_registry as u
-u.define("equivalent = mole = eq")
+from aguaclara.core.units import unit_registry as u
+import aguaclara.research.environmental_processes_analysis as epa
+import aguaclara.core.utility as ut
+from scipy import optimize
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 from scipy import stats
-data_set = "https://raw.githubusercontent.com/barbaraoramah/my-CEE4530/master/Lab%203%20Data/time_equals_0_Gran_Plot.xls"
-import aguaclara.research.environmental_processes_analysis as epa
-import math
-from aguaclara import *
 
-df = pd.read_csv(data_set,delimiter='\t')
-print(df)
-
-mass_total = 4.563 * u.kg
-mass_bucket = 0.592* u.kg
-mass_water = mass_total-mass_bucket
-print(mass_water)
-volume_water = (mass_water/(1*u.kg/u.L))
-print (volume_water)
-flow_rate = 0.074/15*u.L/u.s
-print(flow_rate)
-theta = volume_water/flow_rate
-print(theta)
-
-list(df)
-columns = df.columns
-print(columns)
-
-# use the .loc method to call data of x values
-x = df.loc[:, list(df)[0]].values * u.day
-x
-# use .iloc for calling y values
-y = df.iloc[:,1].values
-
+Gran_data = 'https://raw.githubusercontent.com/barbaraoramah/my-CEE4530/master/Lab%203%20Data/time_equals_0_Gran_Plot.xls'
+# The epa.Gran function imports data from your Gran data file as saved by ProCoDA.
+# The epa.Gran function assigns all of the outputs in one statement
+V_titrant, pH, V_Sample, Normality_Titrant, V_equivalent, ANC = epa.Gran(Gran_data)
 
 # Now create a figure and plot the data and the line from the linear regression.
 fig, ax = plt.subplots()
 
 
 # plot the data as red circles
-ax.plot(((x - (0.607747546*u.day))/theta)*100000*u.s, y, 'r')
+ax.plot(V_titrant, pH, 'r')
+ax.set(xlabel= 'Titrant Volume (mL)')
+ax.set(ylabel= 'pH')
+
+ax.set(title = "Measured pH vs Titrant Volume")
+ax.grid(True)
+plt.ylim(2.5,6.5)
+plt.xlim(0.2,1.5)
+
+plt.text(0.45, 6, '<-- bicarbonate to')
+plt.text(0.55, 5.75, 'carbonic acid')
+plt.text(1.1, 3.25, '<-- approaching')
+plt.text(1.2, 3.05, 'input pH')
+# Here I save the file to my local harddrive. You will need to change this to work on your computer.
+# We don't need the file type (png) here.
+plt.savefig('gran_t=0')
+plt.show()
+
 ```
+
+<p align="center"> <img src="" heights=310 width=927> </p>
+
 $${F_1} = \frac{{{V_S} + {V_T}}}{{{V_S}}}{\text{[}}{{\text{H}}^ + }{\text{]}}$$
 
 The ANC can be calculated from the equivalent volume from $$ANC=\frac{V_e N_t }{V_s }$$
@@ -75,7 +73,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 from scipy import stats
 
-Gran_data = ''
+Gran_data = 'https://raw.githubusercontent.com/barbaraoramah/my-CEE4530/master/Lab%203%20Data/time_equals_0_Gran_Plot.xls'
 # The epa.Gran function imports data from your Gran data file as saved by ProCoDA.
 # The epa.Gran function assigns all of the outputs in one statement
 V_titrant, pH, V_Sample, Normality_Titrant, V_equivalent, ANC = epa.Gran(Gran_data)
